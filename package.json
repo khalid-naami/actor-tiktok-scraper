@@ -1,0 +1,31 @@
+{
+  "name": "actor-tiktok-scraper",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "TikTok Ultimate All-in-One Scraper on Apify. Extracts Profiles & Leads, Videos, Photo Slideshows, TikTok Stories, Comments, Music/Sounds, Hashtags, Search, Shop Products, and Live streams.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "test": "node src/main.js"
+  },
+  "keywords": [
+    "apify",
+    "actor",
+    "tiktok",
+    "tiktok-scraper",
+    "videos",
+    "photo-slides",
+    "leads",
+    "comments",
+    "crawlee",
+    "playwright"
+  ],
+  "author": "Khalil",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "apify": "^3.2.6",
+    "crawlee": "^3.12.2",
+    "got-scraping": "^4.0.7",
+    "playwright": "^1.49.1"
+  }
+}
