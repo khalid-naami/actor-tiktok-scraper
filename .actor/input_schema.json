@@ -1,0 +1,82 @@
+{
+    "title": "TikTok Ultimate All-in-One Scraper Input",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "scrapeMode": {
+            "title": "Scraping Mode",
+            "type": "string",
+            "description": "Select the TikTok data module, or choose AUTO_DETECT to automatically identify the URL type.",
+            "default": "AUTO_DETECT",
+            "editor": "select",
+            "enum": [
+                "AUTO_DETECT",
+                "PROFILES",
+                "VIDEOS",
+                "PHOTO_SLIDES",
+                "COMMENTS",
+                "MUSIC_SOUNDS",
+                "HASHTAGS",
+                "KEYWORD_SEARCH",
+                "TIKTOK_SHOP",
+                "LIVE_METADATA"
+            ]
+        },
+        "targetUrls": {
+            "title": "TikTok URLs or Usernames",
+            "type": "array",
+            "description": "Profiles, video URLs, photo slides, or handles (e.g. https://www.tiktok.com/@tiktok, @khaby.lame, or https://www.tiktok.com/@.../video/...).",
+            "editor": "requestListSources",
+            "prefill": [
+                { "url": "https://www.tiktok.com/@tiktok" },
+                { "url": "https://www.tiktok.com/tag/viral" }
+            ]
+        },
+        "searchKeywords": {
+            "title": "Search Keywords / Queries (Optional)",
+            "type": "array",
+            "description": "Keywords to search on TikTok (e.g. 'e-commerce products', 'travel vlog', 'fitness routine').",
+            "editor": "stringList",
+            "default": []
+        },
+        "maxItems": {
+            "title": "Max Items per Target",
+            "type": "integer",
+            "description": "Maximum number of videos, photo slides, or search results to extract.",
+            "default": 20,
+            "minimum": 1,
+            "maximum": 500
+        },
+        "maxCommentsPerVideo": {
+            "title": "Max Comments per Video / Slide",
+            "type": "integer",
+            "description": "Maximum comments to extract per video.",
+            "default": 15,
+            "minimum": 0,
+            "maximum": 100
+        },
+        "extractEmailAndPhone": {
+            "title": "Extract Contact Leads from Bios",
+            "type": "boolean",
+            "description": "Automatically parses user bios to extract business emails and phone numbers.",
+            "default": true
+        },
+        "proxyConfiguration": {
+            "title": "Proxy Configuration",
+            "type": "object",
+            "description": "Apify Proxy settings. Residential proxies are recommended for TikTok to prevent captcha challenges.",
+            "editor": "proxy",
+            "default": {
+                "useApifyProxy": true,
+                "apifyProxyGroups": ["RESIDENTIAL"]
+            }
+        },
+        "customCookies": {
+            "title": "TikTok Session Cookies (Optional)",
+            "type": "string",
+            "description": "Optional TikTok cookies (JSON array or 'sessionid=...; ttwid=...' format) for scraping restricted regions or logged-in data.",
+            "editor": "textarea"
+        }
+    },
+    "required": ["targetUrls"]
+}
