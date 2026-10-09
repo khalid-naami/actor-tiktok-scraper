@@ -1,0 +1,128 @@
+{
+    "actorSpecification": 1,
+    "fields": {
+        "type": "object",
+        "properties": {
+            "type": {
+                "type": "string",
+                "title": "Entity Type"
+            },
+            "url": {
+                "type": "string",
+                "title": "TikTok URL"
+            },
+            "id": {
+                "type": "string",
+                "title": "Video or User ID"
+            },
+            "username": {
+                "type": "string",
+                "title": "Username (@handle)"
+            },
+            "nickname": {
+                "type": "string",
+                "title": "Display Nickname"
+            },
+            "followersCount": {
+                "type": "integer",
+                "title": "Followers Count"
+            },
+            "followingCount": {
+                "type": "integer",
+                "title": "Following Count"
+            },
+            "heartCount": {
+                "type": "integer",
+                "title": "Total Likes (Hearts)"
+            },
+            "videoCount": {
+                "type": "integer",
+                "title": "Total Videos Published"
+            },
+            "biography": {
+                "type": "string",
+                "title": "Biography"
+            },
+            "email": {
+                "type": "string",
+                "title": "Contact Email"
+            },
+            "phone": {
+                "type": "string",
+                "title": "Contact Phone"
+            },
+            "bioLink": {
+                "type": "string",
+                "title": "Bio External Website"
+            },
+            "isVerified": {
+                "type": "boolean",
+                "title": "Verified Status"
+            },
+            "secUid": {
+                "type": "string",
+                "title": "TikTok SecUid"
+            },
+            "desc": {
+                "type": "string",
+                "title": "Video / Photo Caption"
+            },
+            "isPhotoSlide": {
+                "type": "boolean",
+                "title": "Is Photo Slideshow"
+            },
+            "photoUrls": {
+                "type": "array",
+                "title": "Photo Slides URLs"
+            },
+            "videoUrl": {
+                "type": "string",
+                "title": "Direct Video Play URL"
+            },
+            "coverUrl": {
+                "type": "string",
+                "title": "Thumbnail Cover URL"
+            },
+            "playCount": {
+                "type": "integer",
+                "title": "Views (Plays)"
+            },
+            "diggCount": {
+                "type": "integer",
+                "title": "Likes (Diggs)"
+            },
+            "commentCount": {
+                "type": "integer",
+                "title": "Comments Count"
+            },
+            "shareCount": {
+                "type": "integer",
+                "title": "Shares Count"
+            },
+            "collectCount": {
+                "type": "integer",
+                "title": "Bookmarks / Saves Count"
+            },
+            "musicTitle": {
+                "type": "string",
+                "title": "Sound / Music Title"
+            },
+            "musicAuthor": {
+                "type": "string",
+                "title": "Sound Artist"
+            },
+            "hashtags": {
+                "type": "array",
+                "title": "Hashtags"
+            },
+            "timestamp": {
+                "type": "string",
+                "title": "Publication Timestamp"
+            },
+            "scrapedAt": {
+                "type": "string",
+                "title": "Scraped At"
+            }
+        }
+    }
+}
