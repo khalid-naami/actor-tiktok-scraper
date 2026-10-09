@@ -1,0 +1,25 @@
+{
+    "actorSpecification": 1,
+    "name": "tiktok-ultimate-scraper",
+    "title": "TikTok Ultimate Scraper (Videos, Photos, Profiles, Comments & Sounds)",
+    "description": "Comprehensive all-in-one TikTok scraper. Extracts Profiles with verified emails/phones, Videos & Play links, Photo Slideshows, Stories, Comments & Replies, Trending Music/Sounds, Hashtags, Keyword Search, TikTok Shop items, and Live stream metadata.",
+    "version": "1.0.0",
+    "meta": {
+        "templateId": "js-crawlee-playwright"
+    },
+    "dockerfile": "./Dockerfile",
+    "input": "./input_schema.json",
+    "storages": {
+        "dataset": "./dataset_schema.json"
+    },
+    "output": "./output_schema.json",
+    "categories": [
+        "LEAD_GENERATION",
+        "SOCIAL_MEDIA",
+        "MARKETING",
+        "E-COMMERCE"
+    ],
+    "environmentVariables": {
+        "APIFY_DISABLE_BROWSER_SANDBOX": "1"
+    }
+}
