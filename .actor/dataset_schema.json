@@ -1,7 +1,9 @@
 {
     "actorSpecification": 1,
     "fields": {
+        "$schema": "http://json-schema.org/draft-07/schema#",
         "type": "object",
+        "additionalProperties": true,
         "properties": {
             "type": {
                 "type": "string",
@@ -11,9 +13,13 @@
                 "type": "string",
                 "title": "TikTok URL"
             },
+            "sourceUrl": {
+                "type": "string",
+                "title": "Source URL"
+            },
             "id": {
                 "type": "string",
-                "title": "Video or User ID"
+                "title": "Video, Music, Live or User ID"
             },
             "username": {
                 "type": "string",
@@ -22,6 +28,14 @@
             "nickname": {
                 "type": "string",
                 "title": "Display Nickname"
+            },
+            "authorUsername": {
+                "type": "string",
+                "title": "Author Username"
+            },
+            "authorNickname": {
+                "type": "string",
+                "title": "Author Nickname"
             },
             "followersCount": {
                 "type": "integer",
@@ -55,6 +69,10 @@
                 "type": "string",
                 "title": "Bio External Website"
             },
+            "avatarUrl": {
+                "type": "string",
+                "title": "Avatar Image URL"
+            },
             "isVerified": {
                 "type": "boolean",
                 "title": "Verified Status"
@@ -73,7 +91,8 @@
             },
             "photoUrls": {
                 "type": "array",
-                "title": "Photo Slides URLs"
+                "title": "Photo Slides URLs",
+                "items": { "type": "string" }
             },
             "videoUrl": {
                 "type": "string",
@@ -82,6 +101,10 @@
             "coverUrl": {
                 "type": "string",
                 "title": "Thumbnail Cover URL"
+            },
+            "durationSec": {
+                "type": "integer",
+                "title": "Video Duration (Seconds)"
             },
             "playCount": {
                 "type": "integer",
@@ -103,6 +126,10 @@
                 "type": "integer",
                 "title": "Bookmarks / Saves Count"
             },
+            "musicId": {
+                "type": "string",
+                "title": "Sound / Music ID"
+            },
             "musicTitle": {
                 "type": "string",
                 "title": "Sound / Music Title"
@@ -113,7 +140,56 @@
             },
             "hashtags": {
                 "type": "array",
-                "title": "Hashtags"
+                "title": "Hashtags",
+                "items": { "type": "string" }
+            },
+            "commentsCount": {
+                "type": "integer",
+                "title": "Extracted Comments Count"
+            },
+            "comments": {
+                "type": "array",
+                "title": "Extracted Comments"
+            },
+            "totalComments": {
+                "type": "integer",
+                "title": "Total Comments Extracted"
+            },
+            "hashtagTitle": {
+                "type": "string",
+                "title": "Hashtag Title"
+            },
+            "totalViews": {
+                "type": "string",
+                "title": "Total Views (Formatted)"
+            },
+            "collectedVideosCount": {
+                "type": "integer",
+                "title": "Collected Videos Count"
+            },
+            "videos": {
+                "type": "array",
+                "title": "Collected Videos"
+            },
+            "keyword": {
+                "type": "string",
+                "title": "Search Keyword"
+            },
+            "title": {
+                "type": "string",
+                "title": "Title"
+            },
+            "liveRoomId": {
+                "type": "string",
+                "title": "Live Room ID"
+            },
+            "viewerCount": {
+                "type": "integer",
+                "title": "Live Viewer Count"
+            },
+            "status": {
+                "type": "string",
+                "title": "Status"
             },
             "timestamp": {
                 "type": "string",
@@ -122,6 +198,44 @@
             "scrapedAt": {
                 "type": "string",
                 "title": "Scraped At"
+            }
+        }
+    },
+    "views": {
+        "overview": {
+            "title": "Overview",
+            "transformation": {
+                "fields": [
+                    "type",
+                    "url",
+                    "username",
+                    "authorUsername",
+                    "nickname",
+                    "followersCount",
+                    "desc",
+                    "playCount",
+                    "diggCount",
+                    "commentCount",
+                    "email",
+                    "scrapedAt"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "type": { "label": "Type", "format": "text" },
+                    "url": { "label": "URL", "format": "link" },
+                    "username": { "label": "Username", "format": "text" },
+                    "authorUsername": { "label": "Author", "format": "text" },
+                    "nickname": { "label": "Nickname", "format": "text" },
+                    "followersCount": { "label": "Followers", "format": "number" },
+                    "desc": { "label": "Caption", "format": "text" },
+                    "playCount": { "label": "Views", "format": "number" },
+                    "diggCount": { "label": "Likes", "format": "number" },
+                    "commentCount": { "label": "Comments", "format": "number" },
+                    "email": { "label": "Email", "format": "text" },
+                    "scrapedAt": { "label": "Scraped At", "format": "date" }
+                }
             }
         }
     }
