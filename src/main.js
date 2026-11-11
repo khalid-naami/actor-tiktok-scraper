@@ -172,9 +172,14 @@ try {
             },
 
             preNavigationHooks: [
-                async ({ page, gotoOptions }) => {
-                    // Do not wait for streaming media / analytics ('load'); SSR + React start at 'domcontentloaded'
-                    gotoOptions.waitUntil = 'domcontentloaded';
+                async (crawlingContext, hookGotoOptions) => {
+                    const { page } = crawlingContext;
+                    // Crawlee <=3.16 passes gotoOptions as 2nd arg; Crawlee >=3.17 sets crawlingContext.gotoOptions
+                    const gotoOptions = crawlingContext.gotoOptions ?? hookGotoOptions;
+                    if (gotoOptions && typeof gotoOptions === 'object') {
+                        // Do not wait for streaming media / analytics ('load'); SSR + React start at 'domcontentloaded'
+                        gotoOptions.waitUntil = 'domcontentloaded';
+                    }
 
                     // Apply custom session cookies onto the actual Playwright BrowserContext
                     if (playwrightCookies.length > 0) {
@@ -216,7 +221,8 @@ try {
                 },
             ],
 
-            async requestHandler({ page, request, addRequests }) {
+            async requestHandler({ page, request, addRequests, crawler: activeCrawler }) {
+                const enqueueRequests = typeof addRequests === 'function' ? addRequests : (reqs) => activeCrawler.addRequests(reqs);
                 const url = request.url;
                 const urlType = detectTikTokUrlType(url);
                 const requestedMode = request.userData?.mode || scrapeMode;
@@ -303,7 +309,7 @@ try {
                                         userData: { mode: activeMode, isRoot: false, keyword },
                                     }));
                                 if (childUrls.length > 0) {
-                                    await addRequests(childUrls);
+                                    await enqueueRequests(childUrls);
                                     enqueuedChildCount = childUrls.length;
                                     log.info(`🔗 Enqueued ${enqueuedChildCount} discovered video/photo URLs from: ${url}`);
                                 }
@@ -326,7 +332,7 @@ try {
                                     userData: { mode: 'COMMENTS', isRoot: false, isChild: true },
                                 }));
                             if (childUrls.length > 0) {
-                                await addRequests(childUrls);
+                                await enqueueRequests(childUrls);
                                 enqueuedChildCount = childUrls.length;
                                 log.info(`🔗 Enqueued ${enqueuedChildCount} video(s) for comment extraction from: ${url}`);
                             }
@@ -396,7 +402,7 @@ try {
                                     userData: { mode: 'VIDEOS', isRoot: false, keyword },
                                 }));
                             if (childUrls.length > 0) {
-                                await addRequests(childUrls);
+                                await enqueueRequests(childUrls);
                                 enqueuedChildCount = childUrls.length;
                                 log.info(`🔗 Enqueued ${enqueuedChildCount} search video URLs from: ${url}`);
                             }
