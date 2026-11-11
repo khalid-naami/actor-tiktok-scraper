@@ -6,7 +6,7 @@
         "scrapeMode": {
             "title": "Scraping Mode",
             "type": "string",
-            "description": "Select the TikTok data module, or choose AUTO_DETECT to automatically identify the URL type.",
+            "description": "Select the TikTok data module, or choose AUTO_DETECT to automatically identify each URL type. Selecting VIDEOS or PHOTO_SLIDES on a profile, hashtag, sound, or search URL extracts matching items from that feed.",
             "default": "AUTO_DETECT",
             "editor": "select",
             "enum": [
@@ -78,5 +78,5 @@
             "editor": "textarea"
         }
     },
-    "required": ["targetUrls"]
+    "required": []
 }
