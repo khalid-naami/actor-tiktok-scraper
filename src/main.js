@@ -29,6 +29,11 @@ import {
     waitForTikTokReady,
 } from './extractors.js';
 
+function isProxyTransportError(errOrStatus) {
+    const msg = String(errOrStatus?.message || errOrStatus || '');
+    return errOrStatus === 597 || errOrStatus === 407 || /597|UPSTREAM407|407|Proxy responded with|tunneling socket/i.test(msg);
+}
+
 await Actor.init();
 
 let failureExitMessage = null;
@@ -184,7 +189,7 @@ try {
                     // Apply custom session cookies onto the actual Playwright BrowserContext
                     if (playwrightCookies.length > 0) {
                         try {
-                            await page.context().addCookies(playwrightCookies);
+                            await page.context().addCookies(playwrightCookies.map((c) => ({ ...c, sameSite: (!c.sameSite || String(c.sameSite).toLowerCase() === 'no_restriction') ? 'None' : c.sameSite })));
                         } catch (cookieErr) {
                             log.warning(`Failed to apply custom cookies: ${cookieErr.message}`);
                         }
