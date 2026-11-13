@@ -28,8 +28,12 @@
             "description": "Profiles, video URLs, photo slides, or handles (e.g. https://www.tiktok.com/@tiktok, @khaby.lame, or https://www.tiktok.com/@.../video/...).",
             "editor": "requestListSources",
             "prefill": [
-                { "url": "https://www.tiktok.com/@tiktok" },
-                { "url": "https://www.tiktok.com/tag/viral" }
+                {
+                    "url": "https://www.tiktok.com/@tiktok"
+                },
+                {
+                    "url": "https://www.tiktok.com/tag/viral"
+                }
             ]
         },
         "searchKeywords": {
@@ -68,14 +72,17 @@
             "editor": "proxy",
             "default": {
                 "useApifyProxy": true,
-                "apifyProxyGroups": ["RESIDENTIAL"]
+                "apifyProxyGroups": [
+                    "RESIDENTIAL"
+                ]
             }
         },
         "customCookies": {
             "title": "TikTok Session Cookies (Optional)",
             "type": "string",
             "description": "Optional TikTok cookies (JSON array or 'sessionid=...; ttwid=...' format) for scraping restricted regions or logged-in data.",
-            "editor": "textarea"
+            "editor": "textfield",
+            "isSecret": true
         }
     },
     "required": []
