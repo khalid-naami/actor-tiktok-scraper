@@ -92,7 +92,9 @@
             "photoUrls": {
                 "type": "array",
                 "title": "Photo Slides URLs",
-                "items": { "type": "string" }
+                "items": {
+                    "type": "string"
+                }
             },
             "videoUrl": {
                 "type": "string",
@@ -141,7 +143,9 @@
             "hashtags": {
                 "type": "array",
                 "title": "Hashtags",
-                "items": { "type": "string" }
+                "items": {
+                    "type": "string"
+                }
             },
             "commentsCount": {
                 "type": "integer",
@@ -149,7 +153,11 @@
             },
             "comments": {
                 "type": "array",
-                "title": "Extracted Comments"
+                "title": "Extracted Comments",
+                "items": {
+                    "type": "object",
+                    "additionalProperties": true
+                }
             },
             "totalComments": {
                 "type": "integer",
@@ -169,7 +177,11 @@
             },
             "videos": {
                 "type": "array",
-                "title": "Collected Videos"
+                "title": "Collected Videos",
+                "items": {
+                    "type": "object",
+                    "additionalProperties": true
+                }
             },
             "keyword": {
                 "type": "string",
@@ -199,7 +211,8 @@
                 "type": "string",
                 "title": "Scraped At"
             }
-        }
+        },
+        "required": []
     },
     "views": {
         "overview": {
@@ -223,18 +236,54 @@
             "display": {
                 "component": "table",
                 "properties": {
-                    "type": { "label": "Type", "format": "text" },
-                    "url": { "label": "URL", "format": "link" },
-                    "username": { "label": "Username", "format": "text" },
-                    "authorUsername": { "label": "Author", "format": "text" },
-                    "nickname": { "label": "Nickname", "format": "text" },
-                    "followersCount": { "label": "Followers", "format": "number" },
-                    "desc": { "label": "Caption", "format": "text" },
-                    "playCount": { "label": "Views", "format": "number" },
-                    "diggCount": { "label": "Likes", "format": "number" },
-                    "commentCount": { "label": "Comments", "format": "number" },
-                    "email": { "label": "Email", "format": "text" },
-                    "scrapedAt": { "label": "Scraped At", "format": "date" }
+                    "type": {
+                        "label": "Type",
+                        "format": "text"
+                    },
+                    "url": {
+                        "label": "URL",
+                        "format": "link"
+                    },
+                    "username": {
+                        "label": "Username",
+                        "format": "text"
+                    },
+                    "authorUsername": {
+                        "label": "Author",
+                        "format": "text"
+                    },
+                    "nickname": {
+                        "label": "Nickname",
+                        "format": "text"
+                    },
+                    "followersCount": {
+                        "label": "Followers",
+                        "format": "number"
+                    },
+                    "desc": {
+                        "label": "Caption",
+                        "format": "text"
+                    },
+                    "playCount": {
+                        "label": "Views",
+                        "format": "number"
+                    },
+                    "diggCount": {
+                        "label": "Likes",
+                        "format": "number"
+                    },
+                    "commentCount": {
+                        "label": "Comments",
+                        "format": "number"
+                    },
+                    "email": {
+                        "label": "Email",
+                        "format": "text"
+                    },
+                    "scrapedAt": {
+                        "label": "Scraped At",
+                        "format": "date"
+                    }
                 }
             }
         }
